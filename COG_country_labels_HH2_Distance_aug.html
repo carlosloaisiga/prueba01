@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="../build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="../build/nv.d3.js"></script>
+
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+        svg {
+            display: block;
+        }
+        html, body, #test1, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="test1" class='with-3d-shadow with-transitions'>
+    <svg></svg>
+</div>
+
+<script>
+ datos = [
+  {
+    "key": "Serie 1",
+    "values": [ 
+
+  {
+    "etiqueta": "Aluminium; waste and scrap",
+    "y": 0.029043132,
+    "x": 0.859665312,
+    "size": -0.790254444,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vessels and other floating structures; for breaking up",
+    "y": 0.019650254,
+    "x": 0.862424778,
+    "size": -1.152728821,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Petroleum oils, oils from bituminous minerals, not crude; preparations n.e.s. containing less than 70% petroleum oils, oils from bituminous minerals; these being the basic constituents of the preparations",
+    "y": 0.022476809,
+    "x": 0.862993504,
+    "size": -1.101418993,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Wood sawn or chipped lengthwise, sliced, peeled, whether or not planed, sanded or finger jointed, of a thickness exceeding 6mm",
+    "y": 0.04666779,
+    "x": 0.865729932,
+    "size": -1.338757842,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Zinc; waste and scrap",
+    "y": 0.011898915,
+    "x": 0.86839829,
+    "size": -0.665670185,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Preparations of a kind used in animal feeding",
+    "y": 0.053302179,
+    "x": 0.871460998,
+    "size": -0.279492351,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Raw hides and skins of bovine or equine animals (fresh, salted, dried, limed, pickled, otherwise preserved but not tanned, parchment dressed or further prepared), whether or not dehaired or split",
+    "y": 0.008741401,
+    "x": 0.871777492,
+    "size": -0.567838281,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Veneer sheets and sheets for plywood (spliced or not) and other wood sawn lengthwise, sliced or peeled, whether or not planed, sanded or finger-jointed, of a thickness not exceeding 6mm",
+    "y": 0.026459903,
+    "x": 0.875890141,
+    "size": -1.089143198,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Prepared foods obtained by swelling, roasting of cereals or cereal products (eg corn flakes); cereals, other than maize (corn), in grain form, pre-cooked or otherwise prepared",
+    "y": 0.003270375,
+    "x": 0.879337583,
+    "size": -0.353304223,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Paper or paperboard labels of all kinds, whether or not printed",
+    "y": 0.020599807,
+    "x": 0.879534954,
+    "size": -0.193883094,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Densified wood, in blocks, plates, strips or profile shapes",
+    "y": 0.00138518,
+    "x": 0.879869668,
+    "size": -0.622627511,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Collections and collectors' pieces; of zoological, botanical, mineralogical, anatomical, historical, archaeological, palaeontological, ethnographic or numismatic interest",
+    "y": 0.040833993,
+    "x": 0.880261507,
+    "size": -1.244369804,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Footwear; with outer soles of rubber, plastics, leather or composition leather and uppers of textile materials",
+    "y": 0.012886981,
+    "x": 0.882244991,
+    "size": -1.317198881,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Prepared or preserved meat, meat offal or blood",
+    "y": 0.030671523,
+    "x": 0.883818359,
+    "size": 0.020850086,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Tubes, pipes and hoses and fittings thereof (for example, joints, elbows, flanges), of plastics",
+    "y": 0.014734999,
+    "x": 0.883991074,
+    "size": -0.098301147,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Buttermilk, curdled milk and cream, yoghurt, kephir, fermented or acidified milk or cream, whether or not concentrated, containing added sugar, sweetening matter, flavoured or added fruit or cocoa",
+    "y": 0.012070275,
+    "x": 0.884912072,
+    "size": 0.032782136,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Organic composite solvents and thinners, not elsewhere specified or included; prepared paint or varnish removers",
+    "y": 0.030622241,
+    "x": 0.886390462,
+    "size": -0.016838529,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Paper towels, toilet paper, tissues, handkerchiefs, napkins, tampons, serviettes and similar household, sanitary and hospital articles of paper",
+    "y": 0.015320446,
+    "x": 0.886919509,
+    "size": 0.130724739,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Beer made from malt",
+    "y": 0.067199582,
+    "x": 0.88775069,
+    "size": -0.259614184,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Reservoirs, tanks, vats and similar containers; for any material (excluding compressed or liquefied gas), of iron or steel, capacity exceeding 300l, whether or not lined or heat insulated",
+    "y": 0.025565419,
+    "x": 0.888362239,
+    "size": -0.017800981,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Grain sorghum",
+    "y": 0.056340908,
+    "x": 0.888523733,
+    "size": -1.320718788,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fermented beverages, n.e.s. in chapter 22; (eg cider, perry, mead)",
+    "y": 0.039790532,
+    "x": 0.889438795,
+    "size": 0.0146704,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Plastics; builders' wares n.e.s. or included",
+    "y": 0.042786349,
+    "x": 0.890430765,
+    "size": 0.213302917,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Builders' joinery and carpentry of wood, including cellular wood panels, assembled parquet panels, shingles and shakes",
+    "y": 0.009052001,
+    "x": 0.891255396,
+    "size": 0.045663285,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sausages and similar products of meat, meat offal or blood; food preparations based on these products",
+    "y": 0.071224701,
+    "x": 0.891331432,
+    "size": 0.228042663,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium; bars, rods and profiles",
+    "y": 0.033745065,
+    "x": 0.891930646,
+    "size": -0.068763831,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Bones and horn-cores, unworked, defatted, simply prepared (but not cut to shape), treated with acid or degelatinised; powder and waste of these products",
+    "y": 0.04561944,
+    "x": 0.892033809,
+    "size": -0.335392671,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Poultry; live, fowls of the species gallus domesticus, ducks, geese, turkeys and guinea fowls",
+    "y": 0.051175087,
+    "x": 0.892082784,
+    "size": -0.046512895,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Maize (corn)",
+    "y": 0.040716654,
+    "x": 0.892399914,
+    "size": -1.014476216,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fishing rods, fish-hooks and other line fishing tackle; fish landing nets and the like; decoy \"birds\" (not those of heading no. 9208 or 9705) and similar hunting or shooting requisites",
+    "y": 0.009640876,
+    "x": 0.892710919,
+    "size": -0.429737435,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Safety fuses; detonating fuses; percussion or detonating caps; igniters; electric detonators",
+    "y": 0.004727627,
+    "x": 0.892995723,
+    "size": -0.885944184,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium casks, drums, cans, boxes etc (including rigid, collapsible tubular containers), for materials other than compressed, liquefied gas, 300l capacity or less, lined, heat-insulated or not",
+    "y": 0.05034256,
+    "x": 0.893814995,
+    "size": 0.236130945,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Organic surface-active agents (not soap); surface-active, washing (including auxiliary washing) and cleaning preparations, containing soap or not, excluding those of heading no. 3401",
+    "y": 0.072145103,
+    "x": 0.894205741,
+    "size": 0.11240428,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Paints and varnishes (including enamels, lacquers and distempers), excluding those of heading no. 3209, prepared water pigments of a kind used for finishing leather",
+    "y": 0.059433538,
+    "x": 0.894774763,
+    "size": 0.030693575,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium; structures (excluding prefabricated buildings of heading no. 9406) and parts (eg bridges and sections, towers, lattice masts, etc) plates, rods, profiles and tubes for structures",
+    "y": 0.028258555,
+    "x": 0.896340372,
+    "size": 0.182285685,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Containers; (including containers for transport of fluids) specially designed and equipped for carriage by one or more modes of transport",
+    "y": 0.034757009,
+    "x": 0.896517339,
+    "size": -0.720339494,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Plaster or compositions based on plaster; articles thereof",
+    "y": 0.034989678,
+    "x": 0.896587745,
+    "size": 0.037683111,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Oils and other products of the distillation of high temperature coal tar; similar products in which the weight of the aromatic constituents exceeds that of the non-aromatic constituents",
+    "y": 0.03090616,
+    "x": 0.897053508,
+    "size": -0.278065381,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Tanks, casks, drums, cans, boxes and similar containers, for any material (excluding compressed or liquefied gas), of iron or steel, capacity not exceeding 300l, whether or not lined or heat-insulated",
+    "y": 0.061777246,
+    "x": 0.8974727,
+    "size": 0.131222996,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium; stranded wire, cables, plaited bands and the like, (not electrically insulated)",
+    "y": 0.03228659,
+    "x": 0.897595111,
+    "size": -0.80829642,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fruit, nuts, fruit-peel and other parts of plants; preserved by sugar (drained, glace or crystallised)",
+    "y": 0.000643776,
+    "x": 0.89787306,
+    "size": -0.92854688,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Bulbs, tubers, tuberous roots, corms, crowns and rhizomes; dormant, in growth or in flower; chicory plants and roots other than roots of heading no. 1212",
+    "y": 0.041058382,
+    "x": 0.898026499,
+    "size": -0.890447195,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fibreboard of wood or other ligneous materials, whether or not bonded with resins or other organic substances",
+    "y": 0.007310729,
+    "x": 0.898776006,
+    "size": 0.025516912,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Wheat and meslin",
+    "y": 0.013617431,
+    "x": 0.898826601,
+    "size": -0.068436285,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Paints, varnishes; (enamels and lacquers) based on synthetic polymers or chemically modified natural polymers, dispersed or dissolved in a non-aqueous medium",
+    "y": 0.103504521,
+    "x": 0.899514788,
+    "size": 0.287305955,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sewing thread of man-made staple fibres, whether or not put up for retail sale",
+    "y": 0.004590224,
+    "x": 0.899547773,
+    "size": -0.486662043,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel",
+    "y": 0.049815301,
+    "x": 0.899725107,
+    "size": -0.013903155,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Particle board and similar board; of wood or other ligneous materials, whether or not agglomerated with resins or other organic binding substances",
+    "y": 0.041096272,
+    "x": 0.899804904,
+    "size": 0.115041656,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Soya beans; whether or not broken",
+    "y": 0.036787325,
+    "x": 0.900262167,
+    "size": -0.888899842,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fertilizers; animal or vegetable, whether or not mixed together or chemically treated; fertilizers produced by the mixing or chemical treatment of animal or vegetable products",
+    "y": 0.008873809,
+    "x": 0.900417888,
+    "size": -0.210962141,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Textiles; sets of woven fabric and yarn, with or without accessories, for making into rugs, tapestries, embroidered tablecloths, serviettes and similar textile articles, in packings for retail sale",
+    "y": 0.029459507,
+    "x": 0.900679305,
+    "size": 0.019717763,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Lettuce (lactuca sativa) and chicory (cichorium spp.) fresh or chilled",
+    "y": 0.040745498,
+    "x": 0.900705338,
+    "size": -0.38073976,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Ash and residues (not from the manufacture of iron or steel) containing metals or metallic compounds",
+    "y": 0.038950642,
+    "x": 0.900730813,
+    "size": -0.902347985,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Plastic plates, sheets, film, foil and strip; non-cellular and not reinforced, laminated, supported or similarly combined with other materials, n.e.s. in chapter 39",
+    "y": 0.09050988,
+    "x": 0.901014382,
+    "size": 0.388448836,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Chocolate and other food preparations containing cocoa",
+    "y": 0.071461145,
+    "x": 0.901042548,
+    "size": 0.241573364,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Human hair, dressed, thinned, bleached or otherwise worked; wool or other animal hair or other textile materials, prepared for use in making wigs or the like",
+    "y": 0.000176021,
+    "x": 0.90114697,
+    "size": -1.336774384,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Paints and varnishes (including enamels and lacquers) based on synthetic or chemically modified natural polymers, dispersed or dissolved in an aqueous medium",
+    "y": 0.094056498,
+    "x": 0.901155636,
+    "size": 0.060384799,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Seats (not those of heading no. 9402), whether or not convertible into beds and parts thereof",
+    "y": 0.01841074,
+    "x": 0.901228234,
+    "size": 0.036234557,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vegetable materials and vegetable waste, vegetable residues and bi-products; whether or not in the form of pellets, of a kind used in animal feeding, not elsewhere specified or included",
+    "y": 0.010211774,
+    "x": 0.90149019,
+    "size": -0.341196046,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Containers for compressed or liquefied gas, of iron or steel",
+    "y": 0.040045733,
+    "x": 0.901749092,
+    "size": -0.403022704,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Stoppers, caps, lids (including crown corks, screw caps, pouring stoppers); capsules for bottles, threaded bungs, bung covers, seals and other packaging accessories, of base metal",
+    "y": 0.100369856,
+    "x": 0.902092584,
+    "size": 0.312159593,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Olive oil and its fractions; whether or not refined, but not chemically modified",
+    "y": 0.014649412,
+    "x": 0.902190804,
+    "size": -0.874500374,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Cement, concrete or artificial stone; whether or not reinforced, articles thereof",
+    "y": 0.078048455,
+    "x": 0.902368298,
+    "size": 0.408326056,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Light-vessels, fire-floats, dredgers, floating cranes, other vessels; the navigability of which is subsidiary to main function; floating docks, floating, submersible drilling, production platforms",
+    "y": 0.021517674,
+    "x": 0.902693523,
+    "size": -1.02633003,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sanitary ware; baths, shower-baths, wash-basins, bidets, lavatory pans, seats and covers, flushing cisterns and similar articles, of plastic",
+    "y": 0.076372588,
+    "x": 0.902718751,
+    "size": 0.244416876,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium oxide (including artificial corundum); aluminium hydroxide",
+    "y": 0.005368217,
+    "x": 0.902787763,
+    "size": -1.049099804,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Structures of iron or steel and parts thereof; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures",
+    "y": 0.050690632,
+    "x": 0.903083217,
+    "size": 0.511202734,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Electric accumulators, including separators therefor; whether or not rectangular (including square)",
+    "y": 0.084007781,
+    "x": 0.903424192,
+    "size": -0.351632445,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Curtains (including drapes) and interior blinds; curtain or bed valances",
+    "y": 0.018514544,
+    "x": 0.903476054,
+    "size": -0.183945553,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Starches; inulin",
+    "y": 0.049063758,
+    "x": 0.90384063,
+    "size": -0.33733137,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Printed matter, n.e.s., including printed pictures and photographs",
+    "y": 0.125184959,
+    "x": 0.904149894,
+    "size": 0.596322042,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fabrics; narrow woven, other than goods of heading no. 5807; narrow fabrics consisting of warp without weft assembled by means of an adhesive (bolducs)",
+    "y": 0.045475039,
+    "x": 0.904192445,
+    "size": -0.28023574,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Butter and other fats and oils derived from milk",
+    "y": 0.075415198,
+    "x": 0.904355217,
+    "size": -0.199069218,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sewing thread of man-made filaments, whether or not put up for retail sale",
+    "y": 0.058466678,
+    "x": 0.904441835,
+    "size": 0.025847903,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Perfumery, cosmetic or toilet preparations; pre-shave, shaving, after-shave, bath preparations; personal deodorants and depilatories; room deodorisers, perfumed or not with disinfectant properties or not",
+    "y": 0.076271654,
+    "x": 0.905240273,
+    "size": 0.259936509,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Iron or non-alloy steel; bars and rods, n.e.s. in chapter 72",
+    "y": 0.104289394,
+    "x": 0.905448069,
+    "size": 0.24091038,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Machines for cleaning, sorting, grading seed, grain, dried leguminous vegetables; machinery used in the milling industry for the working of cereals or dried leguminous vegetables, not farm type machinery",
+    "y": 0.003502738,
+    "x": 0.905648612,
+    "size": -0.033823011,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sunflower seeds; whether or not broken",
+    "y": 0.010173258,
+    "x": 0.905693717,
+    "size": -0.208384489,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Brooms, brushes (including parts of machines), hand operated floor sweepers, mops and feather dusters; knots and tufts for broom or brush making; paint pads and rollers; squeegees",
+    "y": 0.118079277,
+    "x": 0.905715917,
+    "size": -0.018461538,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Iron or steel; cast articles",
+    "y": 0.052291474,
+    "x": 0.906460628,
+    "size": 0.147041025,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Plastic plates, sheets, film, foil and strip n.e.s. in chapter 39",
+    "y": 0.141610233,
+    "x": 0.907053242,
+    "size": 0.595896803,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Birds' eggs, not in shell; egg yolks, fresh, dried, cooked by steaming or boiling in water, moulded, frozen or otherwise preserved, whether or not containing added sugar or other sweetening matter",
+    "y": 0.033700619,
+    "x": 0.907185613,
+    "size": 0.086790939,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Phosphinates (hypophosphites), phosphonates (phosphites), phosphates and polyphosphates",
+    "y": 0.024230779,
+    "x": 0.907255193,
+    "size": -0.160431623,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Head-bands, linings, covers, hat foundations, hat frames, peaks and chinstraps, for headgear",
+    "y": 0.037324243,
+    "x": 0.907457469,
+    "size": -0.296618549,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed)",
+    "y": 0.043393322,
+    "x": 0.907756277,
+    "size": -1.129789824,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Rape or colza seeds; whether or not broken",
+    "y": 0.048093059,
+    "x": 0.907835907,
+    "size": -0.114367536,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Whey and products consisting of natural milk constituents; whether or not containing added sugar or other sweetening matter, not elsewhere specified or included",
+    "y": 0.109203779,
+    "x": 0.907917357,
+    "size": 0.109299463,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Glaziers' putty, grafting putty, resin cements, caulking compounds and other mastics; painters' fillings; non-refractory surfacing preparations for facades, indoor walls, floors, ceilings or the like",
+    "y": 0.139760238,
+    "x": 0.90800182,
+    "size": 0.429874069,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Surveying (including photogrammetrical surveying), hydrographic, oceanographic, hydrological, meteorological or geophysical instruments and appliances, excluding compasses, rangefinders",
+    "y": 0.102750403,
+    "x": 0.908730345,
+    "size": -0.459062174,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Electric motors and generators; parts suitable for use solely or principally with the machines of heading no. 8501 or 8502",
+    "y": 0.110691824,
+    "x": 0.908826079,
+    "size": 0.346727705,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fireworks, signalling flares, rain rockets, fog signals and other pyrotechnic articles",
+    "y": 0.026505011,
+    "x": 0.90885676,
+    "size": -0.775780508,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Medicaments; (not goods of heading no. 3002, 3005 or 3006) consisting of mixed or unmixed products for therapeutic or prophylactic use, put up in measured doses or in forms or packings for retail sale",
+    "y": 0.159602584,
+    "x": 0.909204203,
+    "size": 0.641844449,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Nails, tacks, drawing pins, corrugated nails, staples (not those of heading no. 8305) and the like, of iron or steel, with heads of other material or not, but excluding articles with heads of copper",
+    "y": 0.088917731,
+    "x": 0.909351049,
+    "size": -0.173646812,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Insecticides, rodenticides, fungicides, herbicides, anti-sprouting products, plant growth regulators, disinfectants and the like, in forms or packings for retail sale or as preparations or articles",
+    "y": 0.116296469,
+    "x": 0.909683633,
+    "size": 0.205936335,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Peat; (including peat litter), whether or not agglomerated",
+    "y": 0.058253544,
+    "x": 0.909838464,
+    "size": -0.636934577,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Trunks; suit, camera, jewellery, cutlery cases; travel, tool, similar bags; wholly or mainly covered by leather, composition leather, plastic sheeting, textile materials, vulcanised fibre, paperboard",
+    "y": 0.056168404,
+    "x": 0.910001673,
+    "size": -0.974830152,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Rape, colza or mustard oil and their fractions; whether or not refined, but not chemically modified",
+    "y": 0.103577017,
+    "x": 0.910350494,
+    "size": 0.289834353,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Milking machines and dairy machinery",
+    "y": 0.114177066,
+    "x": 0.91054256,
+    "size": 0.623234097,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aircraft, non-powered; balloons, dirigibles, gliders, hang-gliders and the like",
+    "y": 0.071087067,
+    "x": 0.91077473,
+    "size": 0.108554686,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Special purpose motor vehicles; not those for the transport of persons or goods (eg breakdown lorries, road sweeper lorries, spraying lorries, mobile workshops, mobile radiological units etc)",
+    "y": 0.134107487,
+    "x": 0.91096083,
+    "size": -0.599159189,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vinegar and substitutes for vinegar obtained from acetic acid",
+    "y": 0.060452598,
+    "x": 0.911018923,
+    "size": -0.262097987,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Oral or dental hygiene preparations; including fixative pastes and powders",
+    "y": 0.082100038,
+    "x": 0.91107745,
+    "size": 0.099846055,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vegetable, mineral carving material and articles of these materials, moulded or carved articles of wax, stearin, natural gums, resins or modelling pastes, worked unhardened gelatin (not heading no. 3503)",
+    "y": 0.016980311,
+    "x": 0.911154292,
+    "size": -0.324453421,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Gas, liquid or electricity supply or production meters, including calibrating meters therefor",
+    "y": 0.057470352,
+    "x": 0.911219891,
+    "size": 0.04298626,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Agricultural, horticultural or forestry machinery for soil preparation or cultivation; lawn or sports-ground rollers",
+    "y": 0.120511803,
+    "x": 0.911224912,
+    "size": 0.642100112,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Barley",
+    "y": 0.049992825,
+    "x": 0.911511369,
+    "size": 0.067677122,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Umbrellas; sun umbrellas (including walking stick umbrellas, garden umbrellas and similar umbrellas)",
+    "y": 0.084599299,
+    "x": 0.911677773,
+    "size": -0.746732176,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Oils and their fractions n.e.s. in chapter 15, obtained solely from olives, whether or not refined, but not chemically modified, including blends of these oils or fractions with oils or fractions of heading no. 1509",
+    "y": 0.025845424,
+    "x": 0.911904065,
+    "size": -0.660221326,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Combs, hair-slides and similar; hairpins, curling pins, curling grips and hair curlers and the like, other than those of heading no. 8516 and parts thereof",
+    "y": 0.051981858,
+    "x": 0.912293032,
+    "size": -0.709339776,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Imitation jewellery",
+    "y": 0.046670959,
+    "x": 0.912294888,
+    "size": -0.536862458,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Synthetic monofilament of 67 decitex or more, of which no cross-sectional dimension exceeds 1mm; strip and the like (eg artificial straw), of synthetic textile materials of a width not exceeding 5mm",
+    "y": 0.130659231,
+    "x": 0.912382904,
+    "size": -0.043048876,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Asbestos-cement, cellulose fibre-cement or the like; articles thereof",
+    "y": 0.10677444,
+    "x": 0.912801906,
+    "size": 0.218588785,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Ferro-cerium and other pyrophoric alloys in all forms; articles of combustible materials n.e.s. in chapter 36",
+    "y": 0.155112543,
+    "x": 0.913047749,
+    "size": 0.309604477,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Felt; whether or not impregnated, coated, covered or laminated",
+    "y": 0.150370482,
+    "x": 0.913661495,
+    "size": 0.439945561,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Hard rubber (eg ebonite) in all forms, including waste and scrap; articles of hard rubber",
+    "y": 0.07643543,
+    "x": 0.913863254,
+    "size": 0.041432037,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Cigarette paper, whether or not cut to size or in the form of booklets or tubes",
+    "y": 0.068156134,
+    "x": 0.913941754,
+    "size": -0.152055164,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances",
+    "y": 0.019832636,
+    "x": 0.913985508,
+    "size": -0.502350687,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium; articles n.e.s. in chapter 76",
+    "y": 0.14539023,
+    "x": 0.914088679,
+    "size": 0.637084434,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fabrics, woven; of metal thread and metallised yarn of heading no. 5605, of a kind used in apparel, as furnishing fabrics or similar purposes; n.e.s. or included",
+    "y": 0.028241254,
+    "x": 0.914228501,
+    "size": -0.222017803,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Natural borates and concentrates thereof (whether calcined), but not including borates separated from natural brine; natural boric acid containing not less than 85% of H3Bo3, calculated on the dry weight",
+    "y": 0.051629919,
+    "x": 0.914456498,
+    "size": -1.119705766,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Malt; whether or not roasted",
+    "y": 0.121960744,
+    "x": 0.914528857,
+    "size": 0.118527569,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Woven fabrics of synthetic staple fibres, containing 85% or more by weight of synthetic staple fibres",
+    "y": 0.040890354,
+    "x": 0.914565782,
+    "size": -0.230563541,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Natural cork, debacked or roughly squared, or in rectangular (including square) blocks, plates, sheets or strip, (including sharp-edged blanks for corks or stoppers)",
+    "y": 0.095344486,
+    "x": 0.914849083,
+    "size": -1.111529462,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Residues of starch manufacture, similar residues; beet-pulp, bagasse and other waste of sugar manufacture, brewing or distilling dregs and waste, whether or not in the form of pellets",
+    "y": 0.081869317,
+    "x": 0.914925485,
+    "size": 0.09547571,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Glycerol (glycerine); whether or not pure, glycerol waters and glycerol lyes",
+    "y": 0.067517545,
+    "x": 0.91501224,
+    "size": 0.128200653,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Flour, meal, and flakes of potatoes",
+    "y": 0.115702174,
+    "x": 0.915108047,
+    "size": -0.436548262,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Embroidery; in the piece, in strips or in motifs",
+    "y": 0.059649011,
+    "x": 0.915177742,
+    "size": -0.448212706,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fabrics; pile fabrics, including \"long pile\" fabrics and terry fabrics, knitted or crocheted",
+    "y": 0.059324328,
+    "x": 0.915253853,
+    "size": -0.348046664,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Uncoated kraft paper and paperboard, in rolls or sheets, other than that of heading no. 4802 or 4803",
+    "y": 0.034533626,
+    "x": 0.915309834,
+    "size": 0.080070122,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Railway or tramway goods vans and wagons; not self-propelled",
+    "y": 0.05800248,
+    "x": 0.915334581,
+    "size": -0.353708851,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Uncoated paper and paperboard n.e.s., in rolls or sheets",
+    "y": 0.141781999,
+    "x": 0.915425468,
+    "size": 0.445175112,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Colouring matter of vegetable or animal origin (including dyeing extracts, not animal black); whether or not chemically defined; preparations based on colouring matter of vegetable or animal origin",
+    "y": 0.068707772,
+    "x": 0.915589556,
+    "size": -0.325388862,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Carpets and other textile floor coverings; n.e.s. in chapter 57, whether or not made up",
+    "y": 0.038850347,
+    "x": 0.91559137,
+    "size": -0.138285198,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Woven fabrics of cotton, containing less than 85% by weight of cotton, mixed mainly or solely with man-made fibres, weighing not more than 200 g/m2",
+    "y": 0.00643574,
+    "x": 0.915597314,
+    "size": -0.356874541,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fishing vessels, factory ships and other vessels; for processing or preserving fishery products",
+    "y": 0.047830003,
+    "x": 0.915970733,
+    "size": -0.015212069,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Ceramic tableware, kitchenware, other household articles and toilet articles; other than of porcelain or china",
+    "y": 0.026099629,
+    "x": 0.916072409,
+    "size": -0.265177916,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Stoves, ranges, grates, cookers (those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances and parts, of iron or steel",
+    "y": 0.103358511,
+    "x": 0.916210921,
+    "size": 0.176752141,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Hats and other headgear; plaited or made by assembling strips of any material, whether or not lined or trimmed",
+    "y": 0.04611748,
+    "x": 0.916219865,
+    "size": -1.18950636,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Jewellery articles and parts thereof, of precious metal or of metal clad with precious metal",
+    "y": 0.022867526,
+    "x": 0.916431519,
+    "size": -0.211913711,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Refrigerators, freezers and other refrigerating or freezing equipment, electric or other; heat pumps other than air conditioning machines of heading no. 8415",
+    "y": 0.126764983,
+    "x": 0.916477576,
+    "size": 0.711573447,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Yarn of wool or of fine animal hair, put up for retail sale",
+    "y": 0.087185286,
+    "x": 0.916487088,
+    "size": -0.014190761,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vessels; other, including warships and lifeboats, other than rowing boats",
+    "y": 0.038414605,
+    "x": 0.916709041,
+    "size": 0.172263228,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Articles of apparel, clothing accessories and other articles of furskin",
+    "y": 0.020572321,
+    "x": 0.916729942,
+    "size": -0.480184126,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Retreaded or used pneumatic tyres of rubber; solid or cushion tyres, interchangeable tyre treads and tyre flaps, of rubber",
+    "y": 0.11432717,
+    "x": 0.916773781,
+    "size": 0.3036816,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Machines and appliances, instruments or apparatus of chapter 90; parts and accessories n.e.s. in chapter 90",
+    "y": 0.210439551,
+    "x": 0.91683515,
+    "size": 0.884245633,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Quilted textile products; in the piece, composed of one or more layers of textile materials assembled with padding by stitching or otherwise (excluding embroidery of heading no. 5810)",
+    "y": 0.057287128,
+    "x": 0.917054021,
+    "size": 0.157928055,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Trailers and semi-trailers; other vehicles, not mechanically propelled; parts thereof",
+    "y": 0.169898771,
+    "x": 0.9171406,
+    "size": 0.629096055,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Synthetic staple fibres, not carded, combed or otherwise processed for spinning",
+    "y": 0.062934053,
+    "x": 0.91719798,
+    "size": 0.194479911,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Natural cork, raw or simply prepared; waste cork; crushed, granulated or ground cork",
+    "y": 0.079928457,
+    "x": 0.917228529,
+    "size": -0.825942896,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Firearms; parts and accessories of articles of heading no. 9301 to 9304",
+    "y": 0.11903413,
+    "x": 0.917367814,
+    "size": 0.563773925,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Iron or steel; articles, n.e.s. in chapter 73",
+    "y": 0.178163389,
+    "x": 0.917368778,
+    "size": 0.758344207,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Gelatin (including gelatin in rectangular sheets, whether or not surface-worked or coloured) and gelatin derivatives; isinglass; other glues of animal origin, excluding casein glues of heading no. 3501",
+    "y": 0.077593518,
+    "x": 0.917573553,
+    "size": 0.057996103,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Siliceous fossil meals (eg kieselguhr, tripolite and diatomite) and similar siliceous earths; whether or not calcined, of an apparent specific gravity of 1 or less",
+    "y": 0.11438828,
+    "x": 0.917704593,
+    "size": -0.002655955,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Roundabouts, swings, shooting galleries, other fairground amusements, travelling circuses, travelling menageries and travelling theatres",
+    "y": 0.1284499,
+    "x": 0.917752018,
+    "size": 0.292397764,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sulphonated, nitrated or nitrosated derivatives of hydrocarbons; whether or not halogenated",
+    "y": 0.099156431,
+    "x": 0.917899926,
+    "size": -0.634560567,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Finishing agents, dye carriers to accelerate the dyeing, fixing of dyestuffs, other products and preparations, of a kind used in the textile, paper, leather or like industries, n.e.s. or included",
+    "y": 0.159195192,
+    "x": 0.917917425,
+    "size": 0.533048525,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Glass; multiple-walled insulating units of glass",
+    "y": 0.161436407,
+    "x": 0.917954328,
+    "size": 0.651934239,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Perfumes and toilet waters",
+    "y": 0.178669036,
+    "x": 0.918086865,
+    "size": 0.185132824,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Bobbins, spools, cops and similar supports of paper pulp, paper or paperboard (whether or not perforated or hardened)",
+    "y": 0.123639998,
+    "x": 0.918092613,
+    "size": 0.361113381,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Pencils (not of heading no. 9608), crayons, pencil leads, pastels, drawing charcoals, writing or drawing chalks and tailors' chalks",
+    "y": 0.029262219,
+    "x": 0.918205063,
+    "size": -0.278224291,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Machinery parts; used solely or principally with the machinery of heading no. 8425 to 8430",
+    "y": 0.174555711,
+    "x": 0.918253619,
+    "size": 0.530689986,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Cork; articles of natural cork",
+    "y": 0.091700349,
+    "x": 0.918376936,
+    "size": -0.876900623,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Boards, panels, consoles, desks, cabinets, bases with apparatus of heading no. 8535, 8536 for electricity control and distribution, (other than switching apparatus of heading no. 8517)",
+    "y": 0.177793478,
+    "x": 0.918461484,
+    "size": 0.773944763,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of soya-bean oil",
+    "y": 0.060086211,
+    "x": 0.918519352,
+    "size": -0.591866179,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Festive, carnival or other entertainment articles, including conjuring tricks and novelty jokes",
+    "y": 0.051243259,
+    "x": 0.918528744,
+    "size": -0.335713904,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Handkerchiefs (not knitted or crocheted)",
+    "y": 0.031955543,
+    "x": 0.918534126,
+    "size": -0.778195319,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Statuettes and other ornamental ceramic articles",
+    "y": 0.009224806,
+    "x": 0.918882193,
+    "size": -0.45793733,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Rubber thread and cord, textile covered; textile yarn and strip and the like of heading no. 5404, 5405; impregnated, coated, covered or sheathed with rubber or plastics",
+    "y": 0.116461943,
+    "x": 0.918942814,
+    "size": 0.367441978,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Zinc; oxide and peroxide",
+    "y": 0.052089324,
+    "x": 0.918967462,
+    "size": 0.034489144,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Electrical apparatus for switching, protecting electrical circuits, for making connections to or in electrical circuits, for a voltage not exceeding 1000 volts",
+    "y": 0.158219931,
+    "x": 0.919251604,
+    "size": 0.590976603,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Yarn of carded wool, not put up for retail sale",
+    "y": 0.119045795,
+    "x": 0.919260157,
+    "size": 0.233500357,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Fertilizers; mineral or chemical, potassic",
+    "y": 0.071420172,
+    "x": 0.919368383,
+    "size": -0.750784823,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Copper; stranded wire, cables, plaited bands and the like, not electrically insulated",
+    "y": 0.128727464,
+    "x": 0.919384394,
+    "size": -0.168074569,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Stranded wire, ropes, cables, plaited bands, slings and the like, of iron or steel, not electrically insulated",
+    "y": 0.046512213,
+    "x": 0.919489602,
+    "size": 0.121690379,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Sulphates; alums; peroxosulphates (persulphates)",
+    "y": 0.050256419,
+    "x": 0.919571542,
+    "size": -0.013369298,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Monofilament of which any cross-sectional dimension exceeds 1mm, rods, sticks and profile shapes, whether or not surface-worked but not otherwise worked, of plastics",
+    "y": 0.155828346,
+    "x": 0.919682933,
+    "size": 0.298638087,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Inorganic acids and other inorganic oxygen compounds of non-metals; n.e.s. in heading no. 2806 to 2810",
+    "y": 0.158370441,
+    "x": 0.919755701,
+    "size": 0.114790309,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Central heating boilers; excluding those of heading no. 8402",
+    "y": 0.177011361,
+    "x": 0.919824874,
+    "size": 0.665411551,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Bombs, grenades, torpedoes, mines, missiles and similar munitions of war and parts thereof; cartridges and other ammunition, projectiles and parts thereof, including shot and cartridge wads",
+    "y": 0.083929436,
+    "x": 0.919832563,
+    "size": 0.29872256,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Cigarette lighters and other lighters, whether or not mechanical or electrical and parts thereof other than flints and wicks",
+    "y": 0.057175822,
+    "x": 0.920194843,
+    "size": -0.307055022,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Woven fabrics of synthetic filament yarn, including woven fabrics obtained from materials of heading no. 5404",
+    "y": 0.051603047,
+    "x": 0.920340975,
+    "size": -0.139456855,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Hat-forms, hat bodies and hoods of felt, neither blocked to shape nor with made brims; plateaux and manchons (including slit manchons) of felt",
+    "y": 0.072374887,
+    "x": 0.920504069,
+    "size": -0.58682313,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Casein, caseinates and other casein derivatives; casein glues",
+    "y": 0.1168715,
+    "x": 0.920573958,
+    "size": 0.084414109,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Machinery for sorting, screening, separating, washing, crushing, grinding, mixing or kneading earth, stone, ores in solid form, shaping, moulding machinery for solid mineral fuels",
+    "y": 0.116252284,
+    "x": 0.920693544,
+    "size": 0.26699972,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Aluminium; table, kitchen or other household articles and parts thereof, pot scourers and scouring or polishing pads, gloves and the like, sanitary ware and parts thereof",
+    "y": 0.054427951,
+    "x": 0.920713453,
+    "size": -0.065085415,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Synthetic filament yarn (other than sewing thread), not put up for retail sale, including synthetic monofilament of less than 67 decitex",
+    "y": 0.073725587,
+    "x": 0.920756637,
+    "size": 0.399551911,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Inner tubes, of rubber",
+    "y": 0.033529384,
+    "x": 0.920766824,
+    "size": -0.436016283,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Horses, asses, mules and hinnies; live",
+    "y": 0.122903198,
+    "x": 0.920782598,
+    "size": -0.431194443,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Iron pyrites; unroasted",
+    "y": 0.019006897,
+    "x": 0.920854526,
+    "size": -0.594597245,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Casks, barrels, vats, tubs and other coopers' products and parts thereof, of wood, including staves",
+    "y": 0.09504927,
+    "x": 0.920880951,
+    "size": 0.026864425,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Oats",
+    "y": 0.078810856,
+    "x": 0.920966794,
+    "size": 0.246995437,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Ceramic articles; n.e.s. in chapter 69",
+    "y": 0.127099981,
+    "x": 0.921120348,
+    "size": 0.099045678,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Meat and edible offal of poultry; of the poultry of heading no. 0105, (ie fowls of the species gallus domesticus), fresh, chilled or frozen",
+    "y": 0.104130447,
+    "x": 0.921197048,
+    "size": 0.318591197,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Bicycles and other cycles; including delivery tricycles, not motorised",
+    "y": 0.111165467,
+    "x": 0.921218795,
+    "size": -0.153159556,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Razors and razor blades; (including razor blade blanks in strips)",
+    "y": 0.07543513,
+    "x": 0.921310942,
+    "size": -0.102209316,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Tools, hand; spades, shovels, mattocks, picks, hoes, forks, rakes, axes, bill hooks etc, secateurs, scythes, sickles, hay knives, hedge shears and other tools used in agriculture, horticulture, forestry",
+    "y": 0.118449429,
+    "x": 0.921354218,
+    "size": -0.105687058,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Pearls; natural or cultured, whether or not worked or graded but not strung, mounted or set; ungraded pearls, natural or cultured, temporarily strung for convenience of transport",
+    "y": 0.072230179,
+    "x": 0.921363465,
+    "size": -0.851915612,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Microphones and stands therefor; loudspeakers, mounted or not in enclosures; headphones, earphones, microphone-speaker sets; audio frequency electric amplifiers; electric sound amplifier sets",
+    "y": 0.042939271,
+    "x": 0.921515524,
+    "size": -0.137584272,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Automatic goods-vending machines (eg postage stamp, cigarette, food or beverage machines), including money-changing machines",
+    "y": 0.098231271,
+    "x": 0.921657119,
+    "size": 0.296796288,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Swine; live",
+    "y": 0.124793387,
+    "x": 0.921777523,
+    "size": 0.65255591,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Odoriferous substances and mixtures (including alcoholic solutions) with a basis of one or more of these substances, of a kind used as raw materials in industry",
+    "y": 0.135659446,
+    "x": 0.921820623,
+    "size": 0.172619581,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Cocoa; paste; whether or not defatted",
+    "y": 0.105470024,
+    "x": 0.92196312,
+    "size": -0.549546996,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Glass fibres (including glass wool) and articles thereof (eg yarn, woven fabrics)",
+    "y": 0.185498807,
+    "x": 0.922092152,
+    "size": 0.759545797,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Carpets and other textile floor coverings; tufted, whether or not made up",
+    "y": 0.101931597,
+    "x": 0.922169131,
+    "size": 0.284625582,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vehicles; public transport passenger type",
+    "y": 0.121319367,
+    "x": 0.922220586,
+    "size": 0.288295905,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Rosin and resin acids and derivatives thereof; rosin spirit and rosin oils; run gums",
+    "y": 0.070708923,
+    "x": 0.92224708,
+    "size": 0.09117814,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Tulles and other net fabrics; not including woven, knitted or crocheted fabrics; lace in the piece, in strips or in motifs, (other than fabrics of heading no. 6002)",
+    "y": 0.099474259,
+    "x": 0.922305258,
+    "size": -0.172637415,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Patent leather and patent laminated leather, metallised leather",
+    "y": 0.058783799,
+    "x": 0.922311483,
+    "size": -0.42080207,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Flax yarn",
+    "y": 0.090259096,
+    "x": 0.922342603,
+    "size": -0.154249145,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Polymers of propylene or of other olefins, in primary forms",
+    "y": 0.048957159,
+    "x": 0.922632113,
+    "size": 0.23098898,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Diphosphorus pentoxide; phosphoric acid and polyphosphoric acids",
+    "y": 0.033138158,
+    "x": 0.9227494,
+    "size": -0.486419792,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Works trucks, self-propelled, (not fitted with lifting or handling equipment), for factories, warehouses etc, for short distance transport of goods, tractors used on railway station platforms; parts thereof",
+    "y": 0.188874508,
+    "x": 0.9227874,
+    "size": 0.589918945,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Parachutes (including dirigible) and rotochutes; parts thereof and accessories thereto",
+    "y": 0.088227975,
+    "x": 0.922812197,
+    "size": 0.231674475,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Raw furskins (including heads, tails, paws, other pieces or cuttings, suitable for furriers' use), excluding raw hides and skins of heading no. 4101, 4102 or 4103",
+    "y": 0.07476056,
+    "x": 0.922976377,
+    "size": 0.288741683,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Furnaces and ovens; industrial or laboratory, including incinerators, non-electric",
+    "y": 0.19759818,
+    "x": 0.923080307,
+    "size": 0.773138182,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Filter blocks, slabs and plates of paper pulp",
+    "y": 0.161439385,
+    "x": 0.923100861,
+    "size": 0.256020692,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Slag, rock wool and similar mineral wools; exfoliated vermiculite, expanded clays, foamed slag, mixtures and articles of heat, sound insulating or sound-absorbing mineral materials",
+    "y": 0.230429698,
+    "x": 0.923134891,
+    "size": 0.929609893,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Nitric acid; sulphonitric acids",
+    "y": 0.159659261,
+    "x": 0.923257919,
+    "size": 0.502057716,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Calculating machines, accounting machines, cash registers, postage-franking machines, ticket-issuing machines and similar machines, incorporating a calculating device",
+    "y": 0.050666342,
+    "x": 0.923276592,
+    "size": 0.166540604,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Antiques; of an age exceeding one hundred years",
+    "y": 0.117202568,
+    "x": 0.923297684,
+    "size": -1.216463385,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Driers; prepared",
+    "y": 0.094304121,
+    "x": 0.9234673,
+    "size": 0.02037342,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Boats, floating structures, other (for eg rafts, tanks, coffer-dams, landing stages, buoys and beacons)",
+    "y": 0.131336906,
+    "x": 0.923478036,
+    "size": 0.252991159,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Paper, paperboard, cellulose wadding and webs of cellulose fibres; cut to size or shape, articles of paper pulp, paper and paper-board, cellulose wadding or webs of cellulose fibres, n.e.s. in chapter 48",
+    "y": 0.222842713,
+    "x": 0.923500352,
+    "size": 0.605062395,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Railway or tramway track fixtures and fittings; mechanical (including electro-mechanical) signalling, safety or traffic control equipment for railways, tramways, roads, inland waterways, parking facilities, port installations or airfields; parts thereof",
+    "y": 0.186008207,
+    "x": 0.923950051,
+    "size": 0.631082729,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Travel sets; for personal toilet, sewing, shoe or clothes cleaning",
+    "y": 0.096310141,
+    "x": 0.92395768,
+    "size": -0.884045848,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Base metals or silver, clad with gold, not further worked than semi-manufactured",
+    "y": 0.206309228,
+    "x": 0.923990597,
+    "size": 0.369481076,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Vegetable preparations n.e.s.; prepared or preserved otherwise than by vinegar or acetic acid, frozen",
+    "y": 0.136406146,
+    "x": 0.924058066,
+    "size": -0.092197106,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Safes; armoured or reinforced, strong-boxes, doors and safe deposit lockers for strong-rooms, cash or deed boxes and the like, of base metal",
+    "y": 0.097612677,
+    "x": 0.924070951,
+    "size": 0.243260925,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Bells, gongs and the like; non-electric, statuettes, other ornaments, photograph, picture, similar frames, mirrors, of base metal",
+    "y": 0.037347848,
+    "x": 0.924159592,
+    "size": -0.447891851,
+    "shape": "circle"
+  },
+  {
+    "etiqueta": "Hand sieves and hand riddles",
+    "y": 0.133967825,
+    "x": 0.92417368,
+    "size": -0.123759588,
+    "shape": "circle"
+  }
+
+    ] },
+      
+ ]
+
+    // register our custom symbols to nvd3
+    // make sure your path is valid given any size because size scales if the chart scales.
+    nv.utils.symbolMap.set('thin-x', function(size) {
+        size = Math.sqrt(size);
+        return 'M' + (-size/2) + ',' + (-size/2) +
+                'l' + size + ',' + size +
+                'm0,' + -(size) +
+                'l' + (-size) + ',' + size;
+    });
+
+    // create the chart
+    var chart;
+    nv.addGraph(function() {
+        chart = nv.models.scatterChart()
+            .showDistX(true)
+            .showDistY(true)
+            .useVoronoi(true)
+            .color(d3.scale.category10().range())
+            .duration(300)
+        ;
+        chart.dispatch.on('renderEnd', function(){
+            console.log('render complete');
+        });
+
+        chart.xAxis.tickFormat(d3.format('.02f'));
+        chart.yAxis.tickFormat(d3.format('.02f'));
+        chart.showLabels(true);
+        chart.showLegend(false);
+
+        chart.tooltip.contentGenerator(function (d) {
+      var ptIdx = d.pointIndex;
+      var serIdx = d.seriesIndex;
+      etiqueta = d.series[serIdx].values[ptIdx].etiqueta
+      return etiqueta;
+    });
+        //chart.tooltip.headerFormatter(function(d) { return d + ' monkeys' });
+
+
+
+        d3.select('#test1 svg')
+            .datum(datos)
+            .call(chart)
+
+     //chart.tooltip.contentGenerator(function(d) { return d.series[0].color + ' ' + d.series[0].value; });
+     /*.tooltip.contentGenerator(function(key, x, y, e, graph) {
+      var d = e.series.values[e.pointIndex];
+      return d.series[0].color + ' ' + d.shape.toString(); });*/
+     //var theObject = {name:{firstName:"Mark", lastName:"Bob"}};
+//alert(JSON.stringify(theObject));
+
+     
+  /*chart.tooltip(function(key, x, y, e, graph) {
+         var d = e.series.values[e.pointIndex];
+         return '<h3>' + e.series.key + '</h3><p>' + d.shape.toString() + ...;
+ });*/
+
+        nv.utils.windowResize(chart.update);
+
+        chart.dispatch.on('stateChange', function(e) { ('New State:', JSON.stringify(e)); });
+        return chart;
+    });
+
+
+    
+ console.log("Finished:", datos);
+
+    function randomData(groups, points) { //# groups,# points per group
+        // smiley and thin-x are our custom symbols!
+        var data = [],
+            shapes = ['circle'],
+            random = d3.random.normal();
+
+        for (i = 0; i < groups; i++) {
+            data.push({
+                key: 'Group ' + i,
+                values: []
+            });
+
+            for (j = 0; j < points; j++) {
+                data[i].values.push({
+                    x: random(),
+                    y: random(),
+                    size: Math.round(Math.random() * 100) / 100,
+                    shape: shapes[j % shapes.length]
+                });
+            }
+        }
+        //console.log("Finished:", data);
+        return data;
+    }
+
+</script>
+</body>
+</html>
